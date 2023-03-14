@@ -8,7 +8,7 @@
   - Pawns
   - Players
 
-- Probable use of 2-dimensional lists for game board
+- Probable use of 2-dimensional lists OR dicts for game board
 
 ## Program logic
 
