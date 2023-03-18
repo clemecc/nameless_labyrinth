@@ -51,14 +51,6 @@ class Tile:
     sides: list[bool] # Represents the open/closed nature of the four sides.
     treasure: Treasure | None = None
     pawn: Pawn | None = None
-
-    def rotate_cw(self):
-        """Rotates the tile clockwise."""
-        pass
-
-    def rotate_ccw(self):
-        """Rotates the tile counterclockwise."""
-        pass
 ```
 
 ### FixedTile class
@@ -130,7 +122,7 @@ class Game:
     """Encapsulates all data related to an individual game's state and manages game flow."""
     queue: list[Pawn] # Rotating queue for playing order
     board: Board
-    hand: Tile # Tile that slid out of the board, returned by Board.slide_tile method
+    hand: Tile # Tile that last slid out of the board, returned by Board.slide_tile method
 
     def __init__(self, datapath: str, playernames: list[str]):
         pass
