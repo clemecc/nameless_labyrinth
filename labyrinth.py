@@ -25,17 +25,19 @@ class Tile:
     """Represents the tiles that compose the labyrinth."""
     filepath: str # Path to .json file with init data.
     sides: list[bool] # Represents the open/closed nature of the four sides.
-    treasure: Treasure | None = None
-    pawn: Pawn | None = None
 
 @dataclass
 class FixedTile(Tile):
     """These tiles are the ones that are fixed to the board and cannot move."""
     fixed_position: tuple[int, int]
+    treasure: Treasure | None = None
+    pawn: Pawn | None = None
 
 @dataclass
 class MovingTile(Tile):
     """Tiles that can be moved by sliding and rotating."""
+    treasure: Treasure | None = None
+    pawn: Pawn | None = None
 
     def rotate_cw(self):
         """Rotates the tile clockwise."""
@@ -82,7 +84,7 @@ class Game:
     """Encapsulates all data related to an individual game's state and manages game flow."""
     queue: list[Pawn] # Rotating queue for playing order
     board: Board
-    hand: Tile # Tile that last slid out of the board, returned by Board.slide_tile method
+    hand: MovingTile # Tile that last slid out of the board, returned by Board.slide_tile method
 
     def __init__(self, datapath: str, playernames: list[str]):
         pass
