@@ -83,7 +83,7 @@ class MovingTile(Tile):
 ```py
 @dataclass
 class Board:
-  """Represents the game board containing all tiles."""
+    """Represents the game board containing all tiles."""
     grid: dict[tuple[int, int], Tile]
     slideout_position: tuple[int, int] | None
 
@@ -99,7 +99,7 @@ class Board:
     def __setitem__(self, pos: tuple[int, int], tile: Tile):
         if isinstance(self.grid[pos], FixedTile):
             raise KeyError("You can't move fixed tiles!")
-        elif pos == slideout_position:
+        elif pos == self.slideout_position:
             raise KeyError("You can't insert your tile at the same place it came from!")
         else:
             self.grid[pos] = tile
